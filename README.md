@@ -1,4 +1,6 @@
 
+[![Build status][appveyor-badge]][appveyor-build]
+
 # PoshBot.TicTacToe
 
 A simple Tic Tac Toe plugin for [PoshBot](https://github.com/poshbotio/PoshBot).
@@ -29,3 +31,6 @@ Show-Game | mygames | Show your active games
 Show-Stats | stats | Show stats for all players
 
 ## Usage
+
+[appveyor-badge]: https://ci.appveyor.com/api/projects/status/aqtia3gkf8p9xktc?svg=true
+[appveyor-build]: https://ci.appveyor.com/project/devblackops/poshbot-tictactoe

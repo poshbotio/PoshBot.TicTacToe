@@ -1,5 +1,21 @@
 
 function Set-BoardSquare {
+    <#
+        .SYNOPSIS
+        Makes a move in an existing Tic-tac-toe game
+
+        .DESCRIPTION
+        Makes a move in an existing Tic-tac-toe game
+
+        .PARAMETER Location
+        The location on the board to mark
+
+        .PARAMETER Against
+        The user this game is against.
+
+        .EXAMPLE
+        !mark -location b2
+    #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Scope='Function', Target='*')]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '', Scope='Function', Target='*')]
     [PoshBot.BotCommand(

@@ -1,5 +1,21 @@
 
 function New-TicTacToeGame {
+    <#
+        .SYNOPSIS
+        Starts a new Tic-tac-toe game against a player
+
+        .DESCRIPTION
+        Starts a new Tic-tac-toe game against a player
+
+        .PARAMETER Against
+        The username to play against
+
+        .PARAMETER Force
+        If an existing game is already in progress between the two players, this forces a new game. The existing game is deleted.
+
+        .EXAMPLE
+        !newtictactoe -against @joeuser
+    #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Scope='Function', Target='*')]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '', Scope='Function', Target='*')]
     [PoshBot.BotCommand(

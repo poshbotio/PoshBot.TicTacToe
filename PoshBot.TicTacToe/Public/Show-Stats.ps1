@@ -1,5 +1,18 @@
 
 function Show-Stat {
+    <#
+        .SYNOPSIS
+        Shows the current Tic-tac-toe game statistics.
+
+        .DESCRIPTION
+        Shows the current Tic-tac-toe game statistics.
+
+        .PARAMETER Top
+        The top N players to show statistics for.
+
+        .EXAMPLE
+        !stats -top 5
+    #>
     [PoshBot.BotCommand(
         CommandName = 'Show-Stats',
         Aliases = ('stats')

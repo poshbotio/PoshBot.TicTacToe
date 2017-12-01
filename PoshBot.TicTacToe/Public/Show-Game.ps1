@@ -1,5 +1,18 @@
 
 function Show-Game {
+    <#
+        .SYNOPSIS
+        Shows all Tic-tac-toe games in progress for a user.
+
+        .DESCRIPTION
+        Shows all Tic-tac-toe games in progress for a user.
+
+        .PARAMETER Against
+        The user you want to show the game for.
+
+        .EXAMPLE
+        !mygames -against @joeuser
+    #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '', Scope='Function', Target='*')]
     [PoshBot.BotCommand(
         Aliases = ('mygames')

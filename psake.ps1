@@ -1,14 +1,5 @@
 properties {
-    $projectRoot = $ENV:BHProjectPath
-    if(-not $projectRoot) {
-        $projectRoot = $PSScriptRoot
-    }
-
-    $sut = "$projectRoot\$env:BHProjectName"
-    $tests = "$projectRoot\Tests"
-    $manifest = Import-PowerShellDataFile -Path $env:BHPSModuleManifest
-
-    $psVersion = $PSVersionTable.PSVersion.Major
+    $Settings = . $PSScriptRoot/build.settings.ps1
 }
 
 task default -depends Test
@@ -22,7 +13,7 @@ task Init {
 task Test -Depends Init, Analyze, Pester -description 'Run test suite'
 
 task Analyze -Depends Init {
-    $analysis = Invoke-ScriptAnalyzer -Path $sut -Recurse -Verbose:$false
+    $analysis = Invoke-ScriptAnalyzer -Path $Settings.SUT -Recurse -Verbose:$false
     $errors = $analysis | Where-Object {$_.Severity -eq 'Error'}
     $warnings = $analysis | Where-Object {$_.Severity -eq 'Warning'}
     if (@($errors).Count -gt 0) {
@@ -37,15 +28,15 @@ task Analyze -Depends Init {
 } -description 'Run PSScriptAnalyzer'
 
 task Pester -Depends Init {
-    Remove-Module $ENV:BHProjectName -ErrorAction SilentlyContinue -Verbose:$false
-    Import-Module -Name $env:BHPSModuleManifest -Force -Verbose:$false
+    Remove-Module $settings.ProjectName -ErrorAction SilentlyContinue -Verbose:$false
+    Import-Module -Name $settings.ManifestPath -Force -Verbose:$false
 
-    if (Test-Path -Path $tests) {
-        Invoke-Pester -Path $tests -PassThru -EnableExit
+    if (Test-Path -Path $settings.Tests) {
+        Invoke-Pester -Path $settings.Tests -PassThru -EnableExit
     }
 } -description 'Run Pester tests'
 
-Task Publish -Depends Build {
+Task Publish -Depends Test {
     "    Publishing version [$($manifest.ModuleVersion)] to PSGallery..."
-    Publish-Module -Path $sut -NuGetApiKey $env:PSGalleryApiKey -Repository PSGallery
+    Publish-Module -Path $settings.SUT -NuGetApiKey $settings.PSGalleryApiKey -Repository PSGallery
 }

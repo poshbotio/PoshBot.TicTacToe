@@ -18,7 +18,7 @@ function RenderGrid {
 
     # Row 2
     $grid += "       |     |`n"
-    $grid += "B   $($Game.Grid.B1)  :  $($Game.Grid.B2)  |  $($Game.Grid.B3)  `n"
+    $grid += "B   $($Game.Grid.B1)  |  $($Game.Grid.B2)  |  $($Game.Grid.B3)  `n"
     $grid += "  _____|_____|_____`n"
 
     # Row 3

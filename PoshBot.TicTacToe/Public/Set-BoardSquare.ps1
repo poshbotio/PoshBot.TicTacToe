@@ -1,5 +1,7 @@
 
 function Set-BoardSquare {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Scope='Function', Target='*')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '', Scope='Function', Target='*')]
     [PoshBot.BotCommand(
         aliases = ('mark')
     )]
@@ -19,7 +21,8 @@ function Set-BoardSquare {
     } else {
         $thisPlayer = $global:PoshBotContext.From
     }
-    $thatPlayer = $Against
+    $thisPlayer = $thisPlayer -replace '^@', ''
+    $thatPlayer = $Against -replace '^@', ''
     $key = ($thisPlayer, $thatPlayer | Sort-Object) -Join '_'
 
     # Get or initialize stats

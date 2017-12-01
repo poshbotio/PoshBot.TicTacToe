@@ -1,6 +1,7 @@
 
-function Show-Stats {
+function Show-Stat {
     [PoshBot.BotCommand(
+        CommandName = 'Show-Stats',
         Aliases = ('stats')
     )]
     [cmdletbinding()]

@@ -1,5 +1,7 @@
 
 function New-TicTacToeGame {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Scope='Function', Target='*')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '', Scope='Function', Target='*')]
     [PoshBot.BotCommand(
         aliases = ('newtictactoe')
     )]
@@ -16,7 +18,8 @@ function New-TicTacToeGame {
     } else {
         $playerX = $global:PoshBotContext.From
     }
-    $playerO = $Against
+    $playerX = $playerX -replace '^@', ''
+    $playerO = $Against -replace '^@', ''
 
     # Unique key for these players
     $key = ($PlayerX, $PlayerO | Sort-Object) -Join '_'

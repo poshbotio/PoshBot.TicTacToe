@@ -1,5 +1,6 @@
 
 function Show-Game {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '', Scope='Function', Target='*')]
     [PoshBot.BotCommand(
         Aliases = ('mygames')
     )]
@@ -13,6 +14,9 @@ function Show-Game {
     } else {
         $thisPlayer = $global:PoshBotContext.From
     }
+
+    $thisPlayer = $thisPlayer -replace '^@', ''
+    $Against = $Against -replace '^@', ''
 
     if (-not ($games = Get-PoshBotStatefulData -Name Games -ValueOnly)) {
         Write-Output 'There are no active games against anyone. Be a trend setter and start one!'

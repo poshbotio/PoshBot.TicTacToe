@@ -5,6 +5,10 @@
 
 A simple Tic Tac Toe plugin for [PoshBot](https://github.com/poshbotio/PoshBot).
 
+## Demo
+
+[![Demo](https://img.youtube.com/vi/v-0QuBOkr_M/0.jpg)](https://youtu.be/v-0QuBOkr_M)
+
 ## Install Module
 
 To install the module from the [PowerShell Gallery](https://www.powershellgallery.com/):

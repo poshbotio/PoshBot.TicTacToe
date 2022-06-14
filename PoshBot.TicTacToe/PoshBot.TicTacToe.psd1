@@ -1,6 +1,6 @@
 @{
 RootModule = 'PoshBot.TicTacToe'
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 GUID = '3a7f0ac6-0c32-4690-85cd-ad3531cacf6c'
 Author = 'Brandon Olin'
 CompanyName = 'Community'

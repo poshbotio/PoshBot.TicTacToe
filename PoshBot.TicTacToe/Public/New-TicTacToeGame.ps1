@@ -47,6 +47,16 @@ function New-TicTacToeGame {
         $stats[$playerO] = [pscustomobject]@{Wins = 0; Losses = 0; Ties = 0}
         Set-PoshBotStatefulData -Name Stats -Value $stats -Depth 10
     }
+    else {
+        $stats = Get-PoshBotStatefulData -Name Stats -ValueOnly
+        if (-not ($stats.ContainsKey($playerX))) {
+            $stats[$playerX] = [pscustomobject]@{Wins = 0; Losses = 0; Ties = 0}
+        }
+        if (-not ($stats.ContainsKey($playerO))) {
+            $stats[$playerO] = [pscustomobject]@{Wins = 0; Losses = 0; Ties = 0}
+        }
+        Set-PoshBotStatefulData -Name Stats -Value $stats -Depth 10
+    }
 
     if ($games = Get-PoshBotStatefulData -Name Games -ValueOnly) {
         if ($games.ContainsKey($key)) {
